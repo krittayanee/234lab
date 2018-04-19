@@ -9,6 +9,8 @@ script:
 - docker build -t 592115001/htmltest .
 - docker push 592115001/htmltest
 after_success:
+- docker stop htmltest
+- docker rm htmltest
 - docker run -p 8088:80 -d 592115001/htmltest:latest
 service: docker
 env:
